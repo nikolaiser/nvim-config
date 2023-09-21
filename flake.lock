@@ -315,6 +315,22 @@
         "type": "github"
       }
     },
+    "indent-blankline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1692667843,
+        "narHash": "sha256-1EpjFIJ5GK9NXS6dTMJ71w/AtLtR6Q5HrAXCIRNOBAY=",
+        "owner": "lukas-reineke",
+        "repo": "indent-blankline.nvim",
+        "rev": "9637670896b68805430e2f72cf5d16be5b97a22a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukas-reineke",
+        "repo": "indent-blankline.nvim",
+        "type": "github"
+      }
+    },
     "leap": {
       "flake": false,
       "locked": {
@@ -376,6 +392,22 @@
       "original": {
         "owner": "echasnovski",
         "repo": "mini.bufremove",
+        "type": "github"
+      }
+    },
+    "mini-indentscope": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1683192076,
+        "narHash": "sha256-lqy5GMi0J90X7TDrp4ao5Mp6FmBascfJhLjLurq1TMA=",
+        "owner": "echasnovski",
+        "repo": "mini.indentscope",
+        "rev": "f60e9b51a6214c73a170ffc5445ce91560981031",
+        "type": "github"
+      },
+      "original": {
+        "owner": "echasnovski",
+        "repo": "mini.indentscope",
         "type": "github"
       }
     },
@@ -713,10 +745,12 @@
         "flake-utils": "flake-utils",
         "gitsigns-nvim": "gitsigns-nvim",
         "glow": "glow",
+        "indent-blankline": "indent-blankline",
         "leap": "leap",
         "lsp-format": "lsp-format",
         "material-nvim": "material-nvim",
         "mini-bufremove": "mini-bufremove",
+        "mini-indentscope": "mini-indentscope",
         "neotree": "neotree",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",

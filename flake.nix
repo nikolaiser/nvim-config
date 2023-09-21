@@ -156,6 +156,21 @@
       url = "github:scalameta/nvim-metals";
       flake = false;
     };
+
+    indent-blankline = {
+      url = "github:lukas-reineke/indent-blankline.nvim";
+      flake = false;
+    };
+
+    mini-indentscope = {
+      url = "github:echasnovski/mini.indentscope";
+      flake = false;
+    };
+
+    nvim-navic = {
+      url = "github:SmiteshP/nvim-navic";
+      flake = false;
+    };
   };
 
   outputs = inputs @ { nixpkgs, flake-utils, ... }:
@@ -178,7 +193,7 @@
 
           lib = import ./lib { inherit pkgs inputs plugins; };
 
-          inherit (lib) metalsBuilder metalsOverlay neovimBuilder;
+          inherit (lib) neovimBuilder;
 
           pluginOverlay = lib.buildPluginOverlay;
 
@@ -203,7 +218,7 @@
           pkgs = import nixpkgs {
             inherit system;
             config = { allowUnfree = true; };
-            overlays = [ libOverlay pluginOverlay metalsOverlay neovimOverlay tsOverlay ];
+            overlays = [ libOverlay pluginOverlay neovimOverlay tsOverlay ];
           };
 
           default-ide = pkgs.callPackage ./lib/ide.nix {

@@ -132,5 +132,13 @@ with builtins;
         vim.cmd([[autocmd FileType java,scala,sbt lua require('metals').initialize_or_attach(metals_config)]])
         vim.cmd([[augroup end]])
 
+    -- Haskell config
+        lspconfig.hls.setup {
+          capabilities = capabilities;
+          on_attach = default_on_attach;
+          cmd = { "${pkgs.haskellPackages.haskell-language-server}/bin/haskell-language-server", "--lsp" };
+          root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "package.yaml");
+        }
+
   '';
 }

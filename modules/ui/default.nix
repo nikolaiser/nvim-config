@@ -6,7 +6,7 @@ with builtins;
 
 {
   config = {
-    vim.startPlugins = with pkgs.neovimPlugins; [ dressing-nvim bufferline-nvim noice-nvim nvim-notify nvim-lualine ];
+    vim.startPlugins = with pkgs.neovimPlugins; [ dressing-nvim bufferline-nvim noice-nvim nvim-notify nvim-lualine indent-blankline mini-indentscope nvim-navic ];
 
     vim.nnoremap = {
       "<leader>bp" = {
@@ -70,30 +70,115 @@ with builtins;
           },
         }
 
+
+
         require('lualine').setup{
           options = {
-            theme = "material-nvim",
-            section_separators = "",
-            component_separators = "",
-            icons_enabled = true,
+            theme = "auto",
+            globalstatus = true,
+            disabled_filetypes = { statusline = { "dashboard", "alpha" } },
           },
           sections = {
             lualine_a = { "mode" },
             lualine_b = { "branch" },
-            lualine_c = { "filename" },
-            lualine_x = { "encoding", "fileformat", "filetype" },
-            lualine_y = { "progress" },
-            lualine_z = { "location" },
+            lualine_c = {
+              {
+                "diagnostics",
+                symbols = {
+                  error = icons.diagnostics.Error,
+                  warn = icons.diagnostics.Warn,
+                  info = icons.diagnostics.Info,
+                  hint = icons.diagnostics.Hint,
+                },
+              },
+              { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+              { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+              -- stylua: ignore
+              {
+                function() return require("nvim-navic").get_location() end,
+                cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+              },
+            },
+            lualine_x = {
+              -- stylua: ignore
+              {
+                function() return require("noice").api.status.command.get() end,
+                cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+                color = fg("Statement"),
+              },
+              -- stylua: ignore
+              {
+                function() return require("noice").api.status.mode.get() end,
+                cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+                color = fg("Constant"),
+              },
+              -- stylua: ignore
+              {
+                function() return "  " .. require("dap").status() end,
+                cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
+                color = fg("Debug"),
+              },
+              {
+                "diff",
+                symbols = {
+                  added = icons.git.added,
+                  modified = icons.git.modified,
+                  removed = icons.git.removed,
+                },
+              },
+            },
+            lualine_y = {
+              { "progress", separator = " ", padding = { left = 1, right = 0 } },
+              { "location", padding = { left = 0, right = 1 } },
+            },
+            lualine_z = {
+              function()
+                return " " .. os.date("%R")
+              end,
+            },
           },
-          inactive_sections = {
-            lualine_a = { "mode" },
-            lualine_b = { "branch" },
-            lualine_c = { "filename" },
-            lualine_x = { "encoding", "fileformat", "filetype" },
-            lualine_y = { "progress" },
-            lualine_z = { "location" },
-          },
+          extensions = { "neo-tree" },
         }
+
+        require('indent_blankline').setup{
+          char = "│",
+          filetype_exclude = {
+            "help",
+            "alpha",
+            "dashboard",
+            "neo-tree",
+            "Trouble",
+            "lazy",
+            "notify",
+            "toggleterm",
+            "lazyterm",
+          },
+          show_trailing_blankline_indent = false,
+          show_current_context = false,
+        }
+
+        require("mini.indentscope").setup{
+          symbol = "│",
+          options = { try_as_border = true },
+        }
+
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = {
+            "help",
+            "alpha",
+            "dashboard",
+            "neo-tree",
+            "Trouble",
+            "lazy",
+            "mason",
+            "notify",
+            "toggleterm",
+            "lazyterm",
+          },
+          callback = function()
+            vim.b.miniindentscope_disable = true
+          end,
+        })
     '';
   };
 }
