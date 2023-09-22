@@ -653,6 +653,22 @@
         "type": "github"
       }
     },
+    "nvim-navic": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695007994,
+        "narHash": "sha256-X4CFFihI5PFIiHlwQt6VoUIxhm5oBuUvIQxCo9k7zRE=",
+        "owner": "SmiteshP",
+        "repo": "nvim-navic",
+        "rev": "0ffa7ffe6588f3417e680439872f5049e38a24db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SmiteshP",
+        "repo": "nvim-navic",
+        "type": "github"
+      }
+    },
     "nvim-notify": {
       "flake": false,
       "locked": {
@@ -762,6 +778,7 @@
         "nvim-lualine": "nvim-lualine",
         "nvim-luasnip": "nvim-luasnip",
         "nvim-metals": "nvim-metals",
+        "nvim-navic": "nvim-navic",
         "nvim-notify": "nvim-notify",
         "nvim-persistence": "nvim-persistence",
         "nvim-spectre": "nvim-spectre",

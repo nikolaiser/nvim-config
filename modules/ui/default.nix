@@ -100,6 +100,9 @@ with builtins;
               },
             },
             lualine_x = {
+              {
+                "g:metals_status"
+              };
               -- stylua: ignore
               {
                 function() return require("noice").api.status.command.get() end,

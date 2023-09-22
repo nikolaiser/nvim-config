@@ -124,6 +124,8 @@ with builtins;
           }
         )
 
+        metals_config.init_options.statusBarProvider = "on"
+
         -- without doing this, autocommands that deal with filetypes prohibit messages from being shown
         vim.opt_global.shortmess:remove("F")
 
