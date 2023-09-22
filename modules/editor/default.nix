@@ -6,7 +6,7 @@ with builtins;
 {
   config = {
 
-    vim.startPlugins = with pkgs.neovimPlugins; [ vim-tmux-navigator nvim-spectre leap mini-bufremove nui-nvim vim-illuminate nvim-persistence ];
+    vim.startPlugins = with pkgs.neovimPlugins; [ vim-tmux-navigator nvim-spectre leap mini-bufremove nui-nvim vim-illuminate nvim-persistence vim-visual-multi ];
 
     vim.nnoremap = {
       "<leader>sr" = {

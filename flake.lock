@@ -790,6 +790,7 @@
         "trouble-nvim": "trouble-nvim",
         "vim-illuminate": "vim-illuminate",
         "vim-tmux-navigator": "vim-tmux-navigator",
+        "vim-visual-multi": "vim-visual-multi",
         "which-key": "which-key"
       }
     },
@@ -916,6 +917,22 @@
       "original": {
         "owner": "christoomey",
         "repo": "vim-tmux-navigator",
+        "type": "github"
+      }
+    },
+    "vim-visual-multi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1663168587,
+        "narHash": "sha256-Xq2guPaVNRZu8vnkEr1dYZrjou0QBbpXxgNqSBn0HTY=",
+        "owner": "mg979",
+        "repo": "vim-visual-multi",
+        "rev": "724bd53adfbaf32e129b001658b45d4c5c29ca1a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mg979",
+        "repo": "vim-visual-multi",
         "type": "github"
       }
     },

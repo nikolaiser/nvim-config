@@ -171,6 +171,11 @@
       url = "github:SmiteshP/nvim-navic";
       flake = false;
     };
+
+    vim-visual-multi = {
+      url = "github:mg979/vim-visual-multi";
+      flake = false;
+    };
   };
 
   outputs = inputs @ { nixpkgs, flake-utils, ... }:
