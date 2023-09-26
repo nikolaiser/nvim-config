@@ -142,5 +142,30 @@ with builtins;
           root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "package.yaml");
         }
 
+    -- Rust config 
+        lspconfig.rust_analyzer.setup{
+          capabilities = capabilities;
+          on_attach = default_on_attach;
+          cmd = { "${pkgs.rust-analyzer}/bin/rust-analyzer"};
+          settings = {
+            ["rust-analyzer"] = {
+                imports = {
+                    granularity = {
+                        group = "module",
+                    },
+                    prefix = "self",
+                },
+                cargo = {
+                    buildScripts = {
+                        enable = true,
+                    },
+                },
+                procMacro = {
+                    enable = true
+                },
+            }
+          }
+        }
+
   '';
 }
