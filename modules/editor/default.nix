@@ -37,6 +37,22 @@ with builtins;
         command = "<cmd>qa<cr>";
         desc = "Quit all";
       };
+      "<C-Up>" = {
+        command = "<cmd>resize +2<cr>";
+        desc = "Increase window height";
+      };
+      "<C-Down>" = {
+        command = "<cmd>resize -2<cr>";
+        desc = "Decrease window height";
+      };
+      "<C-Left>" = {
+        command = "<cmd>vertical resize -2<cr>";
+        desc = "Decrease window width";
+      };
+      "<C-Right>" = {
+        command = "<cmd>vertical resize +2<cr>";
+        desc = "Increase window width";
+      };
     };
 
     vim.nmap = {
