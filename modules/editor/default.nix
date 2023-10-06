@@ -60,6 +60,26 @@ with builtins;
         command = "<cmd>w<cr><esc>";
         desc = "Save file";
       };
+      "<leader>wd" = {
+        command = "<C-W>c";
+        desc = "Delete window";
+      };
+      "<leader>w-" = {
+        command = "<C-W>s";
+        desc = "Split window below";
+      };
+      "<leader>w|" = {
+        command = "<C-W>s";
+        desc = "Split window right";
+      };
+      "<leader>-" = {
+        command = "<C-W>s";
+        desc = "Split window below";
+      };
+      "<leader>|" = {
+        command = "<C-W>s";
+        desc = "Split window right";
+      };
     };
 
     vim.imap = {
