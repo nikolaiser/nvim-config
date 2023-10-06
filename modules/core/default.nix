@@ -201,26 +201,26 @@ in
               callback = if value ? callback then "callback = ${value.callback}," else "";
               desc = if value ? desc then value.desc else "";
             in
-            "vim.api.nvim_set_keymap(\"${prefix}\", \"${name}\", \"${command}\", {${callback} desc = \"${desc}\"} )")
+            "vim.api.nvim_set_keymap(\"${prefix}\", \"${name}\", \"${command}\", {${callback} desc = \"${desc}\", noremap = ${noremap}} )")
           (filterNonNull mappings);
 
-      nmap = mapVimBinding "n" false config.vim.nmap;
-      imap = mapVimBinding "i" false config.vim.imap;
-      vmap = mapVimBinding "v" false config.vim.vmap;
-      xmap = mapVimBinding "x" false config.vim.xmap;
-      smap = mapVimBinding "s" false config.vim.smap;
-      cmap = mapVimBinding "c" false config.vim.cmap;
-      omap = mapVimBinding "o" false config.vim.omap;
-      tmap = mapVimBinding "t" false config.vim.tmap;
+      nmap = mapVimBinding "n" "false" config.vim.nmap;
+      imap = mapVimBinding "i" "false" config.vim.imap;
+      vmap = mapVimBinding "v" "false" config.vim.vmap;
+      xmap = mapVimBinding "x" "false" config.vim.xmap;
+      smap = mapVimBinding "s" "false" config.vim.smap;
+      cmap = mapVimBinding "c" "false" config.vim.cmap;
+      omap = mapVimBinding "o" "false" config.vim.omap;
+      tmap = mapVimBinding "t" "false" config.vim.tmap;
 
-      nnoremap = mapVimBinding "n" true config.vim.nnoremap;
-      inoremap = mapVimBinding "i" true config.vim.inoremap;
-      vnoremap = mapVimBinding "v" true config.vim.vnoremap;
-      xnoremap = mapVimBinding "x" true config.vim.xnoremap;
-      snoremap = mapVimBinding "s" true config.vim.snoremap;
-      cnoremap = mapVimBinding "c" true config.vim.cnoremap;
-      onoremap = mapVimBinding "o" true config.vim.onoremap;
-      tnoremap = mapVimBinding "t" true config.vim.tnoremap;
+      nnoremap = mapVimBinding "n" "true" config.vim.nnoremap;
+      inoremap = mapVimBinding "i" "true" config.vim.inoremap;
+      vnoremap = mapVimBinding "v" "true" config.vim.vnoremap;
+      xnoremap = mapVimBinding "x" "true" config.vim.xnoremap;
+      snoremap = mapVimBinding "s" "true" config.vim.snoremap;
+      cnoremap = mapVimBinding "c" "true" config.vim.cnoremap;
+      onoremap = mapVimBinding "o" "true" config.vim.onoremap;
+      tnoremap = mapVimBinding "t" "true" config.vim.tnoremap;
     in
     {
       vim.finalConfigRC = ''

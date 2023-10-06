@@ -53,15 +53,8 @@ with builtins;
         command = "<cmd>vertical resize +2<cr>";
         desc = "Increase window width";
       };
-      "<esc>" = {
-        command = "<cmd>noh<cr>";
-        desc = "Escape and clear hlsearch";
-      };
-    };
-
-    vim.inoremap = {
-      "<esc>" = {
-        command = "<cmd>noh<cr>";
+      "<cr>" = {
+        command = "<cmd>noh<cr><cr>";
         desc = "Escape and clear hlsearch";
       };
     };
