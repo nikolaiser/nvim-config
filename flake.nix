@@ -176,6 +176,16 @@
       url = "github:mg979/vim-visual-multi";
       flake = false;
     };
+
+    copilot-lua = {
+      url = "github:zbirenbaum/copilot.lua";
+      flake = false;
+    };
+
+    copilot-cmp = {
+      url = "github:zbirenbaum/copilot-cmp";
+      flake = false;
+    };
   };
 
   outputs = inputs @ { nixpkgs, flake-utils, ... }:

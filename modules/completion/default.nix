@@ -1,14 +1,17 @@
-{pkgs, lib, conifg, ...}:
+{ pkgs, lib, conifg, ... }:
 
 with lib;
 
 with builtins;
+let
+  copilotNodeCommand = "${lib.getExe pkgs.nodejs-slim}";
+in
 
 {
 
   config = {
 
-    vim.startPlugins = with pkgs.neovimPlugins; [ nvim-cmp cmp-buffer cmp-luasnip cmp-path cmp-treesitter ];
+    vim.startPlugins = with pkgs.neovimPlugins; [ nvim-cmp cmp-buffer cmp-luasnip cmp-path cmp-treesitter copilot-lua copilot-cmp ];
 
 
     vim.luaConfigRC = ''
@@ -38,6 +41,7 @@ with builtins;
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
+          { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
@@ -62,6 +66,38 @@ with builtins;
         },
       }
       cmp.setup(cmpOpts)
+
+      require("copilot").setup({
+        -- available options: https://github.com/zbirenbaum/copilot.lua
+        copilot_node_command = "${copilotNodeCommand}",
+        panel = {
+          enabled = false,
+          keymap = {
+            jump_prev = false,
+            jump_next = false,
+            accept = false,
+            refresh = false,
+            open = false,
+          },
+          layout = {
+            position = "bottom",
+            ratio = 0.4,
+          },
+        },
+        suggestion = {
+          enabled = false,
+          keymap = {
+            accept = false,
+            accept_word = false,
+            accept_line = false,
+            next = false,
+            prev = false,
+            dismiss = false,
+          },
+        },
+      })
+
+        require("copilot_cmp").setup()
     '';
 
   };
