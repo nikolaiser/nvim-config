@@ -6,7 +6,7 @@ with lib;
 with builtins;
 
 let
-  inherit (prev.vimUtils) buildVimPluginFrom2Nix;
+  inherit (prev.vimUtils) buildVimPlugin;
 
   ts = prev.tree-sitter.override {
     extraGrammars = {
@@ -34,32 +34,24 @@ let
     cp ${inputs.tree-sitter-scala}/queries/scala/* $out/queries/scala
   '';
 
-  telescopeFixupHook = ''
-    substituteInPlace $out/scripts/vimg \
-      --replace "ueberzug layer" "${pkgs.ueberzug}/bin/ueberzug layer"
-    substituteInPlace $out/lua/telescope/_extensions/media_files.lua \
-      --replace "M.base_directory .. '/scripts/vimg'" "'$out/scripts/vimg'"
-  '';
-
-
-
   tsPostPatchHook = ''
     rm -r parser
     ln -s ${treesitterGrammars} parser
   '';
 
   buildPlug = name:
-    buildVimPluginFrom2Nix {
+    buildVimPlugin {
       pname = name;
       version = "master";
       src = builtins.getAttr name inputs;
-      preFixup = ''
+      preInstall = ''
         ${writeIf (name == "nvim-treesitter") queriesHook}
-        ${writeIf (name == "telescope-media-files") telescopeFixupHook}
       '';
-      postPatch = ''
+      postInstall = ''
         ${writeIf (name == "nvim-treesitter") tsPostPatchHook}
       '';
+      dontBuild = true;
+      dontCheck = true;
     };
 
   vimPlugins = {
