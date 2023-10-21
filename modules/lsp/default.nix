@@ -167,5 +167,11 @@ with builtins;
           }
         }
 
+    -- Go config
+        lspconfig.gopls.setup{
+          capabilities = capabilities;
+          cmd = {"${pkgs.gopls}/bin/gopls"};
+        }
+
   '';
 }
