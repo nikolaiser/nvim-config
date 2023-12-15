@@ -41,7 +41,7 @@ in
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
-          { name = "copilot" },
+          -- { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
@@ -85,14 +85,15 @@ in
           },
         },
         suggestion = {
-          enabled = false,
+          enabled = true,
+          auto_trigger = false,
           keymap = {
-            accept = false,
-            accept_word = false,
-            accept_line = false,
-            next = false,
-            prev = false,
-            dismiss = false,
+            accept = "<M-j>",
+            accept_line = "<M-l>",
+            accept_word = "<M-k>",
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<M-c>"
           },
         },
       })
