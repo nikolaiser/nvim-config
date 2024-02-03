@@ -167,6 +167,13 @@ with builtins;
           }
         }
 
+    -- Terraform config
+        lspconfig.terraformls.setup{
+          capabilities = capabilities;
+          on_attach = default_on_attach;
+          cmd = { "${terraform-ls}/bin/terraform-ls" };
+        }
+
     -- Go config
         lspconfig.gopls.setup{
           capabilities = capabilities;
