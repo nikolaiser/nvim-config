@@ -143,22 +143,7 @@ with builtins;
           extensions = { "neo-tree" },
         }
 
-        require('indent_blankline').setup{
-          char = "│",
-          filetype_exclude = {
-            "help",
-            "alpha",
-            "dashboard",
-            "neo-tree",
-            "Trouble",
-            "lazy",
-            "notify",
-            "toggleterm",
-            "lazyterm",
-          },
-          show_trailing_blankline_indent = false,
-          show_current_context = false,
-        }
+        require('ibl').setup()
 
         require("mini.indentscope").setup{
           symbol = "│",
