@@ -73,7 +73,7 @@ with builtins;
         desc = "Split window below";
       };
       "<leader>w|" = {
-        command = "<C-W>s";
+        command = "<C-W>v";
         desc = "Split window right";
       };
       "<leader>-" = {
@@ -81,7 +81,7 @@ with builtins;
         desc = "Split window below";
       };
       "<leader>|" = {
-        command = "<C-W>s";
+        command = "<C-W>v";
         desc = "Split window right";
       };
     };
