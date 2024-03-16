@@ -180,5 +180,11 @@ with builtins;
           cmd = {"${pkgs.gopls}/bin/gopls"};
         }
 
+    -- Lua config
+        lspconfig.lua_ls.setup{
+          capabilities = capabilities;
+          cmd = {"${pkgs.lua-language-server}/bin/lua-language-server"};
+        }
+
   '';
 }
