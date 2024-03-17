@@ -27,7 +27,6 @@ let
     p.tree-sitter-javascript
     p.tree-sitter-json
     p.tree-sitter-proto
-    p.tree-sitter-lua
     p.tree-sitter-terraform
   ]);
 
