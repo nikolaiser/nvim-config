@@ -32,9 +32,9 @@ let
   ]);
 
   # sync queries of tree-sitter scala and nvim-treesitter
-  #queriesHook = ''
-  #  cp ${inputs.tree-sitter-scala}/queries/scala/* $out/queries/scala
-  #'';
+  queriesHook = ''
+    cp ${inputs.tree-sitter-scala}/queries/scala/* $out/queries/scala
+  '';
 
   tsPostPatchHook = ''
     rm -r parser
@@ -47,6 +47,7 @@ let
       version = "master";
       src = builtins.getAttr name inputs;
       preInstall = ''
+        ${writeIf (name == "nvim-treesitter") queriesHook}
       '';
       postInstall = ''
         ${writeIf (name == "nvim-treesitter") tsPostPatchHook}
