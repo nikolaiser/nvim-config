@@ -50,8 +50,8 @@ let
       postInstall = ''
         ${writeIf (name == "nvim-treesitter") tsPostPatchHook}
       '';
-      dontBuild = true;
-      dontCheck = true;
+      #dontBuild = true;
+      #dontCheck = true;
     };
 
   vimPlugins = {
