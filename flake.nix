@@ -186,6 +186,11 @@
       url = "github:zbirenbaum/copilot-cmp";
       flake = false;
     };
+
+    nvim-treesitter = {
+      url = github:nvim-treesitter/nvim-treesitter;
+      flake = false;
+    };
   };
 
   outputs = inputs @ { nixpkgs, flake-utils, ... }:

@@ -14,5 +14,6 @@
     ./gitsigns
     ./completion
     ./snippets
+    ./treesitter
   ];
 }
