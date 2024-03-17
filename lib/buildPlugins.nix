@@ -47,7 +47,7 @@ let
       src = builtins.getAttr name inputs;
       preInstall = ''
       '';
-      postInstall = ''
+      postPatch = ''
         ${writeIf (name == "nvim-treesitter") tsPostPatchHook}
       '';
       #dontBuild = true;
