@@ -27,7 +27,7 @@ let
     p.tree-sitter-javascript
     p.tree-sitter-json
     p.tree-sitter-proto
-    p.tree-sitter-terraform
+    p.tree-sitter-lua
   ]);
 
   # sync queries of tree-sitter scala and nvim-treesitter
